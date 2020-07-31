@@ -478,12 +478,7 @@ void RGB64x32MatrixPanel_I2S_DMA::updateMatrixDMABuffer(int16_t x_coord, int16_t
 		*/
 		
         // need to disable OE after latch to hide row transition
-//        if((x_coord) == 0 ) v|=BIT_OE;
-	#ifdef USE_ICN2038S
-//        if((x_coord) == 1 ) v|=BIT_OE;
-	#else
         if((x_coord) == 0 ) v|=BIT_OE;
-    #endif      
         
         // drive latch while shifting out last bit of RGB data
 	#ifdef USE_ICN2038S
@@ -650,12 +645,7 @@ void RGB64x32MatrixPanel_I2S_DMA::updateMatrixDMABuffer(uint8_t red, uint8_t gre
           */
           
           // need to disable OE after latch to hide row transition
-//          if((x_coord) == 0 ) v|=BIT_OE;
-	#ifdef USE_ICN2038S
-//          if((x_coord) == 1 ) v|=BIT_OE;
-	#else
           if((x_coord) == 0 ) v|=BIT_OE;
-    #endif      
           
           // drive latch while shifting out last bit of RGB data
 	#ifdef USE_ICN2038S
