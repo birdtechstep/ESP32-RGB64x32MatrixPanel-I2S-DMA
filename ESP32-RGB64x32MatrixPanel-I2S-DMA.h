@@ -33,10 +33,12 @@
  */
 #ifndef MATRIX_HEIGHT
 	#define MATRIX_HEIGHT               32 
+//	#define MATRIX_HEIGHT               64
 #endif
 
 #ifndef MATRIX_WIDTH
 	#define MATRIX_WIDTH                64
+//	#define MATRIX_WIDTH                192
 #endif
 
 #ifndef PIXEL_COLOR_DEPTH_BITS
@@ -123,8 +125,8 @@
 /* Keep this as is. Do not change.                                                     */
 #define ESP32_I2S_DMA_MODE          I2S_PARALLEL_BITS_16    // Pump 16 bits out in parallel
 #define ESP32_I2S_DMA_STORAGE_TYPE  uint16_t                // one uint16_t at a time.
-//#define ESP32_I2S_CLOCK_SPEED     (20000000UL)            // @ 20Mhz
-#define ESP32_I2S_CLOCK_SPEED       (10000000UL)  // @ 10Mhz
+#define ESP32_I2S_CLOCK_SPEED     (20000000UL)            // @ 20Mhz
+//#define ESP32_I2S_CLOCK_SPEED       (10000000UL)  // @ 10Mhz
 #define CLKS_DURING_LATCH            0   // Not used. 
 /***************************************************************************************/            
 

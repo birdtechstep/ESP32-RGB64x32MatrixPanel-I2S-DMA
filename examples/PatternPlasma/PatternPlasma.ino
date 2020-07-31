@@ -25,22 +25,20 @@
  
 //#define USE_CUSTOM_PINS // uncomment to use custom pins, then provide below
 
-#define A_PIN  26
-#define B_PIN  4
-#define C_PIN  27
-#define D_PIN  2
-#define E_PIN  21 
-
-#define R1_PIN   5
-#define R2_PIN  19
-#define G1_PIN  17
-#define G2_PIN  16
-#define B1_PIN  18
-#define B2_PIN  25
-
-#define CLK_PIN  14
-#define LAT_PIN  15
-#define OE_PIN  13
+#define R1_PIN  32
+#define G1_PIN  22
+#define B1_PIN  33
+#define R2_PIN  25
+#define G2_PIN  21
+#define B2_PIN  26
+#define A_PIN   27
+#define B_PIN    4 
+#define C_PIN   14
+#define D_PIN    2
+#define E_PIN   12
+#define LAT_PIN  0
+#define OE_PIN  15
+#define CLK_PIN 13
  
  
 #include <ESP32-RGB64x32MatrixPanel-I2S-DMA.h>

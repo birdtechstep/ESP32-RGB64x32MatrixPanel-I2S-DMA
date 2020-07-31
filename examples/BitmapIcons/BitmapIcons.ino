@@ -11,20 +11,20 @@
 
 
 /*--------------------- RGB DISPLAY PINS -------------------------*/
-#define R1_PIN 25
-#define G1_PIN 26
-#define B1_PIN 27
-#define R2_PIN 14
-#define G2_PIN 12
-#define B2_PIN 13
-#define A_PIN 23
-#define B_PIN 19 // Changed from library default
-#define C_PIN 5
-#define D_PIN 17
-#define E_PIN -1
-#define LAT_PIN 4
-#define OE_PIN 15
-#define CLK_PIN 16
+#define R1_PIN  32
+#define G1_PIN  22
+#define B1_PIN  33
+#define R2_PIN  25
+#define G2_PIN  21
+#define B2_PIN  26
+#define A_PIN   27
+#define B_PIN    4 
+#define C_PIN   14
+#define D_PIN    2
+#define E_PIN   12
+#define LAT_PIN  0
+#define OE_PIN  15
+#define CLK_PIN 13
 
 
 // Display

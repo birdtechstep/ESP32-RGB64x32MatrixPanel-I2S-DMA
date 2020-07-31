@@ -1,18 +1,18 @@
 /* ------------------------- CUSTOM GPIO PIN MAPPING ------------------------- */
-#define R1_PIN 18
-#define G1_PIN 25
-#define B1_PIN 5
-#define R2_PIN 17
-#define G2_PIN 26
-#define B2_PIN 16
-#define A_PIN 14
-#define B_PIN 27 
-#define C_PIN 12
-#define D_PIN 4
-#define E_PIN -1
-#define LAT_PIN 13
-#define OE_PIN 15
-#define CLK_PIN 2
+#define R1_PIN  32
+#define G1_PIN  22
+#define B1_PIN  33
+#define R2_PIN  25
+#define G2_PIN  21
+#define B2_PIN  26
+#define A_PIN   27
+#define B_PIN    4 
+#define C_PIN   14
+#define D_PIN    2
+#define E_PIN   12
+#define LAT_PIN  0
+#define OE_PIN  15
+#define CLK_PIN 13
 
 /* -------------------------- Display Config Initialisation -------------------- */
 

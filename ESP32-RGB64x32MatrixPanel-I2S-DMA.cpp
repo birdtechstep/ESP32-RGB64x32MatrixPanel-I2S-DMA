@@ -450,12 +450,21 @@ void RGB64x32MatrixPanel_I2S_DMA::updateMatrixDMABuffer(int16_t x_coord, int16_t
         // normally output current rows ADDX, special case for LSB, output previous row's ADDX (as previous row is being displayed for one latch cycle)
         if(color_depth_idx == 0)
           gpioRowAddress = y_coord-1;
-        
+ 
+	#ifdef USE_ICN2038S
+        if (gpioRowAddress & 0x01) { v|=BIT_A; v|=BIT_LAT; }    // 1
+        if (gpioRowAddress & 0x02) { v|=BIT_B; v|=BIT_LAT; }    // 2
+        if (gpioRowAddress & 0x04) { v|=BIT_C; v|=BIT_LAT; }   // 4
+        if (gpioRowAddress & 0x08) { v|=BIT_D; v|=BIT_LAT; }   // 8
+        if (gpioRowAddress & 0x10) { v|=BIT_E; v|=BIT_LAT; }   // 16
+	#else
         if (gpioRowAddress & 0x01) v|=BIT_A; // 1
         if (gpioRowAddress & 0x02) v|=BIT_B; // 2
         if (gpioRowAddress & 0x04) v|=BIT_C; // 4
         if (gpioRowAddress & 0x08) v|=BIT_D; // 8
         if (gpioRowAddress & 0x10) v|=BIT_E; // 16
+    #endif      
+ 
   
 		/* ORIG
         // need to disable OE after latch to hide row transition
@@ -469,14 +478,22 @@ void RGB64x32MatrixPanel_I2S_DMA::updateMatrixDMABuffer(int16_t x_coord, int16_t
 		*/
 		
         // need to disable OE after latch to hide row transition
+//        if((x_coord) == 0 ) v|=BIT_OE;
+	#ifdef USE_ICN2038S
+//        if((x_coord) == 1 ) v|=BIT_OE;
+	#else
         if((x_coord) == 0 ) v|=BIT_OE;
+    #endif      
         
         // drive latch while shifting out last bit of RGB data
+	#ifdef USE_ICN2038S
+        if((x_coord) == PIXELS_PER_ROW-4) v|=BIT_LAT;
+	#else
         if((x_coord) == PIXELS_PER_ROW-1) v|=BIT_LAT;
+    #endif      
 		
         // need to turn off OE one clock before latch, otherwise can get ghosting
         if((x_coord)==PIXELS_PER_ROW-2) v|=BIT_OE;		
-		
 		
         
         // turn off OE after brightness value is reached when displaying MSBs
@@ -605,11 +622,20 @@ void RGB64x32MatrixPanel_I2S_DMA::updateMatrixDMABuffer(uint8_t red, uint8_t gre
           if(color_depth_idx == 0)
             gpioRowAddress = matrix_frame_parallel_row-1;
           
+	#ifdef USE_ICN2038S
+          if (gpioRowAddress & 0x01) { v|=BIT_A; v|=BIT_LAT; }    // 1
+          if (gpioRowAddress & 0x02) { v|=BIT_B; v|=BIT_LAT; }    // 2
+          if (gpioRowAddress & 0x04) { v|=BIT_C; v|=BIT_LAT; }   // 4
+          if (gpioRowAddress & 0x08) { v|=BIT_D; v|=BIT_LAT; }   // 8
+          if (gpioRowAddress & 0x10) { v|=BIT_E; v|=BIT_LAT; }   // 16
+	#else
           if (gpioRowAddress & 0x01) v|=BIT_A; // 1
           if (gpioRowAddress & 0x02) v|=BIT_B; // 2
           if (gpioRowAddress & 0x04) v|=BIT_C; // 4
           if (gpioRowAddress & 0x08) v|=BIT_D; // 8
           if (gpioRowAddress & 0x10) v|=BIT_E; // 16
+   #endif      
+
           
             
           /* ORIG
@@ -624,11 +650,19 @@ void RGB64x32MatrixPanel_I2S_DMA::updateMatrixDMABuffer(uint8_t red, uint8_t gre
           */
           
           // need to disable OE after latch to hide row transition
+//          if((x_coord) == 0 ) v|=BIT_OE;
+	#ifdef USE_ICN2038S
+//          if((x_coord) == 1 ) v|=BIT_OE;
+	#else
           if((x_coord) == 0 ) v|=BIT_OE;
+    #endif      
           
           // drive latch while shifting out last bit of RGB data
+	#ifdef USE_ICN2038S
+          if((x_coord) == PIXELS_PER_ROW-4) v|=BIT_LAT;
+	#else
           if((x_coord) == PIXELS_PER_ROW-1) v|=BIT_LAT;
-          
+    #endif      
           // need to turn off OE one clock before latch, otherwise can get ghosting
           if((x_coord)==PIXELS_PER_ROW-2) v|=BIT_OE;	
           
